@@ -1,7 +1,7 @@
 package com.example.madlevel3example.Repository
 
 import android.content.Context
-import com.example.madlevel2example.Reminder
+import com.example.madlevel3example.Model.Reminder
 import com.example.madlevel3example.DAO.ReminderDao
 import com.example.madlevel3example.ReminderRoomDatabase
 

@@ -4,7 +4,7 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.example.madlevel2example.Reminder
+import com.example.madlevel3example.Model.Reminder
 import com.example.madlevel3example.DAO.ReminderDao
 
 @Database(entities = [Reminder::class], version = 1, exportSchema = false)

@@ -1,4 +1,4 @@
-package com.example.madlevel2example
+package com.example.madlevel3example.Model
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
