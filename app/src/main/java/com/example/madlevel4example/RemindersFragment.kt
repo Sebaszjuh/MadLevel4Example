@@ -13,12 +13,15 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.madlevel4example.Model.Reminder
 import com.example.madlevel2example.ReminderAdapter
+import com.example.madlevel4example.Repository.ReminderRepository
 import kotlinx.android.synthetic.main.fragment_reminders.*
 
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.
  */
 class RemindersFragment : Fragment() {
+
+    private lateinit var reminderRepository: ReminderRepository
 
     private val reminders = arrayListOf<Reminder>()
     private val reminderAdapter = ReminderAdapter(reminders)
@@ -35,6 +38,10 @@ class RemindersFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         initViews()
         observeAddReminderResult()
+
+        reminderRepository = ReminderRepository(requireContext())
+        getRemindersFromDatabase()
+
     }
 
     private fun initViews() {
@@ -52,14 +59,24 @@ class RemindersFragment : Fragment() {
         createItemTouchHelper().attachToRecyclerView(rvReminders)
     }
 
+    private fun getRemindersFromDatabase() {
+        val reminders = reminderRepository.getAllReminders()
+        this@RemindersFragment.reminders.clear()
+        this@RemindersFragment.reminders.addAll(reminders)
+        reminderAdapter.notifyDataSetChanged()
+    }
+
+
     private fun observeAddReminderResult() {
         setFragmentResultListener(REQ_REMINDER_KEY) { key, bundle ->
             
             bundle.getString(BUNDLE_REMINDER_KEY)?.let {
                 val reminder = Reminder(it)
 
-                reminders.add(reminder)
-                reminderAdapter.notifyDataSetChanged()
+                // Adds into db en retrieves it from db
+                reminderRepository.insertReminder(reminder)
+                getRemindersFromDatabase()
+
             } ?: Log.e("ReminderFragment", "Request triggered, but empty reminder text!")
 
         }
@@ -81,8 +98,9 @@ class RemindersFragment : Fragment() {
             //Removes on swipe left
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
                 val position = viewHolder.adapterPosition
-                reminders.removeAt(position)
-                reminderAdapter.notifyDataSetChanged()
+                reminderRepository.deleteReminder(reminders[position])
+                getRemindersFromDatabase()
+
             }
         }
         return ItemTouchHelper(callback)
