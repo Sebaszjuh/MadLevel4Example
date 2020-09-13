@@ -1,4 +1,4 @@
-package com.example.madlevel2example
+package com.example.madlevel4example.Adapter
 
 import android.view.LayoutInflater
 import android.view.View
@@ -18,7 +18,7 @@ class ReminderAdapter(private val reminders: List<Reminder>) :
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ReminderAdapter.ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(
             LayoutInflater.from(parent.context).inflate(R.layout.item_reminder, parent, false)
         )

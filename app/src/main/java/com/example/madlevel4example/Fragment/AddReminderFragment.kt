@@ -1,4 +1,4 @@
-package com.example.madlevel4example
+package com.example.madlevel4example.Fragment
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -9,6 +9,7 @@ import android.widget.Toast
 import androidx.core.os.bundleOf
 import androidx.fragment.app.setFragmentResult
 import androidx.navigation.fragment.findNavController
+import com.example.madlevel4example.R
 import kotlinx.android.synthetic.main.fragment_add_reminder.*
 
 /**

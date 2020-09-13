@@ -3,7 +3,6 @@ package com.example.madlevel4example.Repository
 import android.content.Context
 import com.example.madlevel4example.Model.Reminder
 import com.example.madlevel4example.DAO.ReminderDao
-import com.example.madlevel4example.ReminderRoomDatabase
 
 class ReminderRepository(context: Context) {
 
@@ -14,19 +13,19 @@ class ReminderRepository(context: Context) {
         reminderDAO = reminderRoomDatabase!!.reminderDao()
     }
 
-    fun getAllReminders(): List<Reminder> {
+    suspend fun getAllReminders(): List<Reminder> {
         return reminderDAO.getAllReminders()
     }
 
-    fun insertReminder(reminder: Reminder) {
+    suspend fun insertReminder(reminder: Reminder) {
         reminderDAO.insertReminder(reminder)
     }
 
-    fun deleteReminder(reminder: Reminder) {
+    suspend fun deleteReminder(reminder: Reminder) {
         reminderDAO.deleteReminder(reminder)
     }
 
-    fun updateReminder(reminder: Reminder) {
+    suspend fun updateReminder(reminder: Reminder) {
         reminderDAO.updateReminder(reminder)
     }
 }

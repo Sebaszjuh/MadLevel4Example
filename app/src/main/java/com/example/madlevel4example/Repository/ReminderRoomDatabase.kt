@@ -1,4 +1,4 @@
-package com.example.madlevel4example
+package com.example.madlevel4example.Repository
 
 import android.content.Context
 import androidx.room.Database
@@ -25,7 +25,6 @@ abstract class ReminderRoomDatabase : RoomDatabase() {
                             context.applicationContext,
                             ReminderRoomDatabase::class.java, DATABASE_NAME
                         )
-                            .allowMainThreadQueries()
                             .build()
                     }
                 }
