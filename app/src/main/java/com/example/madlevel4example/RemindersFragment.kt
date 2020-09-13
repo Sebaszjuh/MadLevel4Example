@@ -1,4 +1,4 @@
-package com.example.madlevel3example
+package com.example.madlevel4example
 
 import android.os.Bundle
 import android.util.Log
@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.madlevel3example.Model.Reminder
+import com.example.madlevel4example.Model.Reminder
 import com.example.madlevel2example.ReminderAdapter
 import kotlinx.android.synthetic.main.fragment_reminders.*
 
